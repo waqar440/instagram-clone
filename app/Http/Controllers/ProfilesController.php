@@ -11,9 +11,13 @@ class ProfilesController extends Controller
     public function index($user){
         
         $user = User::findOrFail($user);
-        // dd($user->profile->profileImage);
+        // dd(auth()->user()->following->contains($user->id));
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id): false;
+        
+        // dd($follows);
         return view('profiles.index',[
             'user' => $user,
+            'follows' => $follows
         ]);
     }
 

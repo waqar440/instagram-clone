@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://kit.fontawesome.com/c83b429d08.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,9 +34,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                    <ul class="navbar-nav">
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-primary mx-2" type="submit">Search</button>
+                        </form>
+                        @auth
+                            <li class="nav-item pl-5">
+                                <a class="nav-link" href="/"><i style="font-size: 20px;" class="fa-solid fa-house"></i></a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="/p/create"><i style="font-size: 20px;" class="fa-solid fa-plus"></i></a>
+                            </li>
+                        @endauth
                     </ul>
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -50,6 +63,7 @@
                                 </li>
                             @endif
                         @else
+                            
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }} <span class="caret"></span>
