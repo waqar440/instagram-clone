@@ -22,5 +22,6 @@
 
 */
 Route::namespace('Admin')->group(function(){
-    Route::get('/', 'AdminController@index');
+    Route::get('/', 'DashboardController@index');
+    Route::get('/login', 'AdminController@showloginform');
 });

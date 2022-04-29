@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class DashboardController extends Controller
 {
-    public function showloginform(){
-        return view('admin.auth.login');
+    public function index(){
+        return view('admin.index');
     }
 }
