@@ -12,7 +12,6 @@
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <script src="https://kit.fontawesome.com/c83b429d08.js" crossorigin="anonymous"></script>
-    {{-- <script src="js/adminpage.js"></script> --}}
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -25,6 +24,7 @@
 <body>
   <div class="s-layout">
     <!-- Sidebar -->
+    @auth
     <div class="s-layout__sidebar">
       <a class="s-sidebar__trigger" href="#0">
          <i class="fa fa-bars"></i>
@@ -37,19 +37,41 @@
                   <i class="fa fa-home"></i><em>Home</em>
                </a>
             </li>
+            @auth
+            
+            @endauth
             <li>
-               <a class="s-sidebar__nav-link" href="#0">
-                 <i class="fa fa-user"></i><em>My Profile</em>
-               </a>
-            </li>
-            <li>
-               <a class="s-sidebar__nav-link" href="#0">
+               <a class="s-sidebar__nav-link btn btn-outline text-light" href="#0">
                   <i class="fa fa-camera"></i><em>Camera</em>
                </a>
             </li>
+
+            <li class="dropdown">
+               
+                  <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     <i class="fa fa-user mx-2"></i><em class="mx-2">Profile</em> 
+                  </a> 
+               
+               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 <li>
+                  <li>
+                     <form class="dropdown-item" method="POST" action="{{ route('admin.logout') }}">
+                        @csrf
+                        <input class="btn btn-warning" type="submit" value="Logout">
+                     </form>
+                  </li>
+                 </li>
+                 <li><a class="dropdown-item" href="#">Another action</a></li>
+                 <li><hr class="dropdown-divider"></li>
+                 <li><a class="dropdown-item" href="#">Something else here</a></li>
+               </ul>
+             </li>
+     
          </ul>
       </nav>
     </div>
+    @endauth
+   
     
     <!-- Content -->
     <main class="s-layout__content">

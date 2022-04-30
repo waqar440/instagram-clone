@@ -6,7 +6,7 @@
         <div class="col-md-8">
                 <div class="card-header border">{{ __('Admin Login') }}</div>
                 <div class="card-body border">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login.admin') }}">
                         @csrf
 
                         <div class="form-group row mb-4">
